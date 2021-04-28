@@ -1,0 +1,112 @@
+﻿<Window x:Class="Client.ConnectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="Remote Desktop Connection" Height="300" Width="600"
+        ResizeMode ="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Focusable="True"
+        >
+    <Grid Background="#FFF0F0F0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Border BorderThickness="0,0,0,1" Grid.Row="0" BorderBrush="#FF003399" >
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Background="White" Grid.Column="0">
+                    <Viewbox Height="103">
+                        <Image Name="Image" Margin="10"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Background="White" Grid.Column="1">
+                    <TextBlock Margin="10,20,0,0" FontSize="26" Foreground="#FF003399" FontStretch="ExtraCondensed" TextOptions.TextHintingMode="Fixed" TextWrapping="Wrap" TextDecorations="{x:Null}">
+                        Remote Desktop
+                    </TextBlock>
+                    <TextBlock Margin="10,0,0,0" FontSize="35"  FontWeight="Bold" Foreground="#FF003399" FontFamily="Segoe UI Black" FontStretch="Condensed">
+                        Connection
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="0,0,30,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3.1*" />
+            </Grid.ColumnDefinitions>
+
+            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="20" Content="Name :"/>
+
+            <Border Background="White"  Grid.Column="1"  BorderBrush="#7F000000" 
+                     CornerRadius="3" BorderThickness="2" Margin="0,10,0,6">
+                <TextBox VerticalAlignment="Center" TextAlignment="Left" LostFocus="OnLostFocusName"
+                      FontSize="20" Name="NameBox" Padding="2"/>
+            </Border>
+        </Grid>
+
+
+        <Grid Grid.Row="2" Margin="0,0,30,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="46*" />
+            </Grid.ColumnDefinitions>
+            
+            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0,0,0" FontSize="20" Content="IP :"/>
+
+            <Border Background="White" Grid.Column="1"  BorderBrush="#7F000000" 
+                     CornerRadius="3" BorderThickness="2" Margin="0,6,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox  Grid.Column="0" VerticalAlignment="Center" TextAlignment="Center" TextChanged="OnTextChanged"
+                          FontSize="20" PreviewTextInput="NumberValidationTextBox" GotFocus="OnGotFocus" LostFocus="OnLostFocus"
+                          BorderThickness="0" Name="First" Margin="0" Text="0"/>
+                    <TextBox  Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center"
+                          Focusable="False" FontSize="20" BorderThickness="0"  Margin="0" Text="."/>
+                    <TextBox  Grid.Column="2" VerticalAlignment="Center" TextAlignment="Center"
+                          FontSize="20" PreviewTextInput="NumberValidationTextBox" GotFocus="OnGotFocus" LostFocus="OnLostFocus"
+                          BorderThickness="0" Name="Second" Margin="0" Text="0"/>
+                    <TextBox  Grid.Column="3" VerticalAlignment="Center" TextAlignment="Center"
+                          Focusable="False" FontSize="20" BorderThickness="0"  Margin="0" Text="."/>
+                    <TextBox  Grid.Column="4" VerticalAlignment="Center" TextAlignment="Center"
+                          FontSize="20" PreviewTextInput="NumberValidationTextBox" GotFocus="OnGotFocus" LostFocus="OnLostFocus"
+                          BorderThickness="0" Name="Third" Margin="0" Text="0"/>
+                    <TextBox  Grid.Column="5" VerticalAlignment="Center" TextAlignment="Center"
+                          Focusable="False" FontSize="20" BorderThickness="0"  Margin="0" Text="."/>
+                    <TextBox  Grid.Column="6" VerticalAlignment="Center" TextAlignment="Center"
+                          FontSize="20" PreviewTextInput="NumberValidationTextBox" GotFocus="OnGotFocus" LostFocus="OnLostFocus" TextChanged="OnTextChanged"
+                          BorderThickness="0" Name="Fourth" Margin="0" Text="0"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label VerticalAlignment="Center" Name="ReportLabel"></Label>
+            <Border   BorderBrush="Black" Name="MyBorder"  
+                     CornerRadius="3" BorderThickness="1" Margin="30,12,30,12">
+                <Button Background="White" Padding="15,0,15,0" Name="ConnectionButton" IsEnabled="false" Click="TryConnect">
+                    Connect
+                </Button>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

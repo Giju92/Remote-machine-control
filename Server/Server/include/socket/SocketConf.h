@@ -1,0 +1,5 @@
+#pragma once
+
+#define DEFAULT_SERVER_PORT "1500"
+#define DEFAULT_BLOCK_SIZE 1024
+#define DEFAULT_SIZE_LENGTH 7
